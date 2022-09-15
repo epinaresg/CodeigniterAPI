@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: "codeigniter_eval"
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html/codeigniter_eval
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "codeigniter_eval"
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_PASSWORD: ""
